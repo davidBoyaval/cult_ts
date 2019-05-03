@@ -1,0 +1,29 @@
+1// npm init -y
+2// npm i typescript
+3// npm i nodemon
+4// npm i @types/node
+5// npm i concurrently
+
+json:
+tsconfig.json
+{ 
+"compilerOptions":{
+"module":"commonjs",
+"esModuleInterop": true,
+"outDir":"dist",
+"target":"es6",
+"strict":true
+
+},
+"include":[
+    "src/**/*"
+]
+}
+
+creer un dossier src pour les fichier ts
+lancer la compile avec "npx tsc"
+
+//inserer dans package.json:
+"scripts": {
+    "dev": "concurrently -k -n \"Typescript,Node\" -p\"[{name}]\" -c\"blue,green\" \"tsc --watch\" \"nodemon dist/Model/ModelDAO/ProduitsDAO.js\""
+  },
