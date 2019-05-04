@@ -1,4 +1,4 @@
-
+//methode ajax getProduits
 var xhr =new XMLHttpRequest();
 
 xhr.open('GET','http://localhost:3000/test');

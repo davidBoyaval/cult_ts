@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Produits_1 = require("../Produits");
 const BddConnectionMySQL_1 = require("./BddConnectionMySQL");
+//methode de reccuperation des produits(parametres en dur pour le moment)
 function getProduits() {
     return new Promise(function (resolve, reject) {
         let quantite = 10;
@@ -15,17 +16,17 @@ function getProduits() {
             var i = 0;
             if (error) {
                 throw error;
-                reject;
+                reject; //rejet de la promise
             }
             else {
-                var resultTaille = rows[0].length;
+                var resultTaille = rows[0].length; //rows[0] resultats du select de ma PS MySQL
                 for (i = 0; i < resultTaille; i++) {
                     listProd[i] = new Produits_1.Produits(rows[0][i].id_produits, rows[0][i].nom, rows[0][i].prix_vente_HT, rows[0][i].formats, rows[0][i].types);
                 }
                 ;
-                var result = JSON.stringify(listProd);
+                var result = JSON.stringify(listProd); //conversion resultat en JSON
                 console.log(listProd);
-                resolve(result);
+                resolve(result); //return de la promise
             }
         });
     });

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //const mysql = require('mysql');
 //const mysql=require('mysql');
 const mysql_1 = __importDefault(require("mysql"));
+//definition BDD
 const connect = mysql_1.default.createPool({
     connectionLimit: 5,
     multipleStatements: true,
@@ -15,6 +16,7 @@ const connect = mysql_1.default.createPool({
     database: 'ecommerce',
 });
 exports.connect = connect;
+//connection BDD
 connect.getConnection((err) => {
     if (err)
         throw err;

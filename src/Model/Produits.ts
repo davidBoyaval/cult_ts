@@ -1,7 +1,8 @@
 export class Produits {
 
+    //attribut Produits
     private id_produit :number;
-    
+        //getter & setter attribut Produits
         public setId_produit(v : number) {
             this.id_produit = v;}
         public getId_produit(): number {
@@ -37,7 +38,7 @@ export class Produits {
         public getType(): string {
             return this.type}
 
-
+    //constructeur Produits
     constructor(id_produit :number, nom :string, prix_de_vente :number, format :string, type :string) {
         this.id_produit = id_produit;
         this.nom = nom;

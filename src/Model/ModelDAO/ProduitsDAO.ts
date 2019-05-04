@@ -4,8 +4,9 @@ import { callbackify, error } from 'util';
 import { stringify } from 'querystring';
 import { json } from 'body-parser';
 
+//methode de reccuperation des produits(parametres en dur pour le moment)
 export function getProduits(){
-    return new Promise(function (resolve,reject){
+    return new Promise(function (resolve,reject){//promise methode asynchrone
         let quantite: number = 10;
         let debut: number = 0;
         let nom: string = "a";
@@ -18,9 +19,9 @@ export function getProduits(){
                         var i :number=0;
                         if(error){
                             throw error;
-                            reject;
+                            reject;//rejet de la promise
                         }else{
-                        var resultTaille=rows[0].length;
+                        var resultTaille=rows[0].length;//rows[0] resultats du select de ma PS MySQL
                             for (i = 0; i < resultTaille;i++){
                             listProd[i] = new Produits(rows[0][i].id_produits, 
                                                     rows[0][i].nom,
@@ -29,9 +30,9 @@ export function getProduits(){
                                                     rows[0][i].types) 
                           
                         };
-                            var result = JSON.stringify(listProd);
+                            var result = JSON.stringify(listProd);//conversion resultat en JSON
                             console.log(listProd);
-                        resolve(result);
+                        resolve(result);//return de la promise
                         }
         });
     });

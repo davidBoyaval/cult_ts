@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Produits {
+    //getter & setter attribut Produits
     setId_produit(v) {
         this.id_produit = v;
     }
@@ -31,6 +32,7 @@ class Produits {
     getType() {
         return this.type;
     }
+    //constructeur Produits
     constructor(id_produit, nom, prix_de_vente, format, type) {
         this.id_produit = id_produit;
         this.nom = nom;
