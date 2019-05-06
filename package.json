@@ -4,7 +4,7 @@
   "description": "",
   "main": "BddConnectionMySQL.js",
   "scripts": {
-    "dev": "concurrently -k -n \"Typescript,Node\" -p\"[{name}]\" -c\"blue,green\" \"tsc --watch\" \"nodemon dist/Controleur/ServiceProduits.js\""
+    "dev": "concurrently -k -n \"Typescript,Node\" -p\"[{name}]\" -c\"blue,green\" \"tsc --watch\" \"nodemon dist/controleur/ServiceProduits.js\""
   },
   "keywords": [],
   "author": "",

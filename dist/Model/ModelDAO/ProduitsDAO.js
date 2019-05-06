@@ -3,13 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Produits_1 = require("../Produits");
 const BddConnectionMySQL_1 = require("./BddConnectionMySQL");
 //methode de reccuperation des produits(parametres en dur pour le moment)
-function getProduits() {
+function getProduits(debut, quantite, nom, genre, type) {
     return new Promise(function (resolve, reject) {
-        let quantite = 10;
-        let debut = 0;
-        let nom = "a";
-        let genre = "fantastique";
-        let type = "jeux";
+        if (nom == '')
+            nom = null;
+        if (genre == '')
+            genre = null;
+        if (type == '')
+            type = null;
         var listProd = new Array();
         let sqlQuery = 'CALL PS_lister_produit(?, ?, ?, ?, ?, @err_code, @err_msg);select  @err_code, @err_msg ';
         BddConnectionMySQL_1.connect.query(sqlQuery, [quantite, debut, nom, genre, type], (error, rows) => {

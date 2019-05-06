@@ -12,13 +12,32 @@ exp.use(body_parser_1.default.json());
 exp.listen(3000, function () {
     console.log('démarrage avec express');
 });
+let debut = 0;
+let quantite = 9;
+let nom;
+let genre;
+let type;
 //methode GET 
-exp.get('/test', (req, res) => {
+exp.get('/catalog', (req, res) => {
     //CORS
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     //appelle couche DAO methode getProduits reccuperation de la promise et réponse au XMLHttpRequest
-    ProduitsDAO_1.getProduits().then(response => {
+    ProduitsDAO_1.getProduits(debut, quantite, nom, genre, type).then(response => {
+        console.log(response);
+        res.status(200).send(response);
+    });
+});
+exp.get('/recherche', (req, res) => {
+    //CORS
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    //reccupération des paramètres JS
+    nom = req.param('motclef');
+    genre = req.param('genre');
+    type = req.param('type');
+    //appelle couche DAO methode getProduits reccuperation de la promise et réponse au XMLHttpRequest
+    ProduitsDAO_1.getProduits(debut, quantite, nom, genre, type).then(response => {
         console.log(response);
         res.status(200).send(response);
     });
