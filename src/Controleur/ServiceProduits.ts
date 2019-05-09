@@ -14,7 +14,7 @@ exp.listen(3000, function () {
 });
 
 let debut: number=0;
-let quantite: number=9;
+let quantite: number=24;
 let nom: string | null;
 let genre: string | null;
 let type: string | null;

@@ -14,7 +14,10 @@ xhr.addEventListener('readystatechange',function(){
 
 
 
-
+$("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("active");
+});
 
 //methode de mise en page html
 function mise_en_page(xhr){
@@ -29,13 +32,23 @@ function mise_en_page(xhr){
         var pdv = (element.prix_de_vente);
         var format = (element.format);
         var type = (element.type);
-        html = html + "<p>" + id + "</p>" +
-            "<p>" + nom + "</p>" +
-            "<p>" + pdv + " €</p>" +
-            "<p>" + format + "</p>" +
-            "<p>" + type + "</p>";
+
+        html=   html+"<div class=\"col-sm-6 col-lg-3\">"+
+                        "<div class=\"input-group\">"+
+                            "<div class=\"input-group-prepend\">"+
+                                "<div class=\"card text-white bg-dark mb-3\" style=\"min-width: 26rem;\">"+
+                                 "<div class=\"card-header\">" + nom+"</div>"+
+                                    "<div class=\"card-body\">"+
+                                        "<h5 class=\"card-title\">" + pdv+" €</h5>"+
+                                            "<p class=\"card-text\">" + type +" / "+
+                                        format+".</p>"+
+                                    "</div>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>"+
+                    "</div>";
     });
-    document.getElementById("json").innerHTML = html;   
+    document.getElementById("list").innerHTML = html;   
 }
 
 

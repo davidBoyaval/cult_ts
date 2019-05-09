@@ -13,7 +13,7 @@ exp.listen(3000, function () {
     console.log('démarrage avec express');
 });
 let debut = 0;
-let quantite = 9;
+let quantite = 24;
 let nom;
 let genre;
 let type;
