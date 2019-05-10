@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 //const mysql = require('mysql');
-//const mysql=require('mysql');
 const mysql_1 = __importDefault(require("mysql"));
 //definition BDD
 const connect = mysql_1.default.createPool({

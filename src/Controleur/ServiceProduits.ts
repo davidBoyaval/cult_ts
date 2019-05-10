@@ -14,7 +14,7 @@ exp.listen(3000, function () {
 });
 
 let debut: number=0;
-let quantite: number=24;
+let quantite: number=10;
 let nom: string | null;
 let genre: string | null;
 let type: string | null;
@@ -31,7 +31,6 @@ exp.get('/catalog', (req: Request, res: Response) => {
         res.status(200).send(response);
     });
 });
-
 
 exp.get('/recherche',(req :Request, res :Response) =>{
     //CORS
@@ -50,4 +49,35 @@ exp.get('/recherche',(req :Request, res :Response) =>{
     }); 
 });
 
+exp.get('/next', (req: Request, res: Response) => {
+    //CORS
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    //reccupération des paramètres JS
+    debut+=9;
+    nom = req.param('motclef');
+    genre = req.param('genre');
+    type = req.param('type');
+    //appelle couche DAO methode getProduits reccuperation de la promise et réponse au XMLHttpRequest
+    getProduits(debut, quantite, nom, genre, type).then(response => {
+        console.log(response);
+        res.status(200).send(response);
+    });
+});
+
+exp.get('/last', (req: Request, res: Response) => {
+    //CORS
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    //reccupération des paramètres JS
+    debut -= 9;
+    nom = req.param('motclef');
+    genre = req.param('genre');
+    type = req.param('type');
+    //appelle couche DAO methode getProduits reccuperation de la promise et réponse au XMLHttpRequest
+    getProduits(debut, quantite, nom, genre, type).then(response => {
+        console.log(response);
+        res.status(200).send(response);
+    });
+});
 

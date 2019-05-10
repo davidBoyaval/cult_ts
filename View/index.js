@@ -1,23 +1,72 @@
-//methode ajax getProduits
-var xhr =new XMLHttpRequest();
 
-xhr.open('GET','http://localhost:3000/catalog');
+let rechBtn = document.getElementById('rechBtn');
+let next = document.getElementById('next');
+let last = document.getElementById('last');
+
+//fonction menu
+$("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("active");
+});
+
+//methode ajax getProduits
+let url = 'http://localhost:3000/catalog';
+var xhr =new XMLHttpRequest();
+xhr.open('GET', url);
 xhr.send();
 xhr.addEventListener('readystatechange',function(){
     if (xhr.readyState === 4) {
         mise_en_page(xhr);
     };
 });
-
-
-
-
-
-
-$("#menu-toggle").click(function (e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("active");
+//methode ajax recherche
+rechBtn.onclick = (() => {
+    let motclef = document.getElementById('motclef').value;
+    let genre = document.getElementById('genre').value;
+    let type = document.getElementById('type').value;
+    var xhr = new XMLHttpRequest();
+    url = 'http://localhost:3000/recherche?motclef=' + motclef + '&genre=' + genre + '&type=' + type;
+    xhr.open('GET', url);
+    xhr.send();
+    xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState === 4) {
+            mise_en_page(xhr);
+        };
+    });
 });
+
+next.onclick = (() => {
+    let motclef = document.getElementById('motclef').value;
+    let genre = document.getElementById('genre').value;
+    let type = document.getElementById('type').value;
+    var xhr = new XMLHttpRequest();
+    url = 'http://localhost:3000/next?motclef=' + motclef + '&genre=' + genre + '&type=' + type;
+    xhr.open('GET', url);
+    xhr.send();
+    xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState === 4) {
+            mise_en_page(xhr);
+        };
+    });
+});
+
+last.onclick = (() => {
+    let motclef = document.getElementById('motclef').value;
+    let genre = document.getElementById('genre').value;
+    let type = document.getElementById('type').value;
+    var xhr = new XMLHttpRequest();
+    url = 'http://localhost:3000/last?motclef=' + motclef + '&genre=' + genre + '&type=' + type;
+    xhr.open('GET', url);
+    xhr.send();
+    xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState === 4) {
+            mise_en_page(xhr);
+        };
+    });
+});
+
+
+
 
 //methode de mise en page html
 function mise_en_page(xhr){
@@ -41,7 +90,7 @@ function mise_en_page(xhr){
                                     "<div class=\"card-body\">"+
                                         "<h5 class=\"card-title\">" + pdv+" €</h5>"+
                                             "<p class=\"card-text\">" + type +" / "+
-                                        format+".</p>"+
+                                        format+".<input type=\"button\" class=\"ajPanier\" value=\"Ajouter au panier\"></p>"+
                                     "</div>"+
                                 "</div>"+
                             "</div>"+

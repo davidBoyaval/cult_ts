@@ -1,5 +1,4 @@
 //const mysql = require('mysql');
-//const mysql=require('mysql');
 import mysql from 'mysql';
 import util from 'util';
 
